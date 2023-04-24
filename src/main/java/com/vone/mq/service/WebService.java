@@ -172,7 +172,7 @@ public class WebService {
         setting.setVkey("jkstate");
         setting.setVvalue("1");
         settingDao.save(setting);
-
+        System.out.println("心跳成功");
         return ResUtil.success();
     }
 
