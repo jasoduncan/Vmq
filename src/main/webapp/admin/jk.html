@@ -52,17 +52,27 @@
 
 <script>
     function formatDate(now) {
-        if (now=="0"){
+        if (now==0) {
             return "无";
         }
-        now = new Date(now).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
-        return now/*.getFullYear()
+        now = getTime8(now);
+        now = new Date(now);
+        return now.getFullYear()
             + "-" + (now.getMonth()>8?(now.getMonth()+1):"0"+(now.getMonth()+1))
             + "-" + (now.getDate()>9?now.getDate():"0"+now.getDate())
             + " " + (now.getHours()>9?now.getHours():"0"+now.getHours())
             + ":" + (now.getMinutes()>9?now.getMinutes():"0"+now.getMinutes())
-            + ":" + (now.getSeconds()>9?now.getSeconds():"0"+now.getSeconds());*/
+            + ":" + (now.getSeconds()>9?now.getSeconds():"0"+now.getSeconds());
 
+    }
+    function getTime8(time){
+        // 东8区，东时区记做正数
+        let zoneOffset = 8;
+        // 算出时差,并转换为毫秒：
+        let offset = new Date().getTimezoneOffset() * 60 * 1000;
+        // 此时东8区的时间
+        let currentZoneDate = new Date(Number(time) + offset + zoneOffset * 60 * 60 * 1000);
+        return new Date(currentZoneDate).getTime()
     }
     layui.use(['form','layer'], function(){
         var table = layui.table,form = layui.form;
