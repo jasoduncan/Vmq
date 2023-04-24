@@ -17,6 +17,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -172,7 +174,8 @@ public class WebService {
         setting.setVkey("jkstate");
         setting.setVvalue("1");
         settingDao.save(setting);
-        System.out.println("心跳成功");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))+"心跳成功");
         return ResUtil.success();
     }
 
