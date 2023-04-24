@@ -52,7 +52,7 @@
         if (now=="0"){
             return "无";
         }
-        now = new Date(now).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' });
+        now = new Date(now);
         return now.getFullYear()
             + "-" + (now.getMonth()>8?(now.getMonth()+1):"0"+(now.getMonth()+1))
             + "-" + (now.getDate()>9?now.getDate():"0"+now.getDate())
